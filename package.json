@@ -4,7 +4,9 @@
   "description": "VoiceCoin front end",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "build:watch": "webpack --watch",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +28,7 @@
     "jsdom": "^11.5.1",
     "mocha": "^4.0.1",
     "nodemon": "^1.12.5",
+    "path": "^0.12.7",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
