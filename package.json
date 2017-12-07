@@ -1,0 +1,34 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "VoiceCoin front end",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/voicecoin/web-console-ui.git"
+  },
+  "author": "amatranga",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/voicecoin/web-console-ui/issues"
+  },
+  "homepage": "https://github.com/voicecoin/web-console-ui#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "enzyme": "^3.2.0",
+    "jsdom": "^11.5.1",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router-dom": "^4.2.2",
+    "webpack": "^3.10.0"
+  }
+}
