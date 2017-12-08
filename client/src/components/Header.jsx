@@ -1,7 +1,5 @@
 import React from 'react';
-import Brand from './Brand';
 import ConversionRates from './ConversionRates';
-import LanguageSelector from './LanguageSelector';
 
 // The header will probably need to do some sort of async
 // fetch to get conversion rates
@@ -30,8 +28,6 @@ class Header extends React.Component {
         <div className="conversion">
           <ConversionRates conversion_Rate={this.state.conversionRate} />
         </div>
-        <Brand />
-        <LanguageSelector />
       </div>
     );
   }

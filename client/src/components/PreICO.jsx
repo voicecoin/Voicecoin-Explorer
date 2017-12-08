@@ -5,7 +5,7 @@ import JoinTokenSale from './JoinTokenSale';
 
 const PreICO = () => {
   return(
-    <div className="PreICO">
+    <div className="preICO">
       <h1>Voicecoin</h1>
       <h3>Next Generation BlockChain</h3>
       <h3>Connect Voice with BlockChain</h3>
