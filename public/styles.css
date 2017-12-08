@@ -96,7 +96,7 @@ a {
 
 /* PreICO styles */
 
-.preICO {
+.main {
   display: subgrid;
   grid-area: c0 / c1 / j0 / j8;
   grid-template-areas: 
@@ -114,15 +114,15 @@ a {
   margin-bottom: 50px;
 }
 
-.preICO h1 {
+.main h1 {
   font-size: 5em;
 }
 
-.preICO h3 {
+.main h3 {
   font-size: 2em;
 }
 
-.preICO button {
+.main button {
   background-color: #e7e7e7;
   border-color: #555;
   cursor: pointer;
