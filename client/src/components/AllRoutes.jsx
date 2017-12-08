@@ -9,6 +9,7 @@ import {
   Switch
 } from 'react-router-dom';
 
+import Login from './Login'
 import PreICO from './PreICO';
 import PrivateRoute from './PrivateRoute';
 import Redirected from './Redirected';
@@ -17,7 +18,8 @@ const AllRoutes = () => {
   return(
     <Router>
       <Switch>
-        <Route exact path="/" component={PreICO} />
+      <Route exact path="/" component={PreICO} />
+        <Route path="/login" component={Login} />
       </Switch>
     </Router>
   );
