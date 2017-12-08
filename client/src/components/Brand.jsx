@@ -2,7 +2,7 @@ import React from 'react';
 
 const Brand = () => {
   return(
-    <h2 href="/">Voicecoin</h2>
+    <a href="/"><h2>Voicecoin</h2></a>
   );
 }
 
