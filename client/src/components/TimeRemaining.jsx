@@ -30,9 +30,9 @@ class TimeRemaining extends React.Component {
     const timeToLaunch = moment().to(launchDate);
 
     return(
-      <div>
-        <h5>Happening {timeToLaunch}</h5>
-        <h6>on {launchDisplay}</h6>
+      <div className="countdown">
+        <h4>Pre-ICO ends {timeToLaunch}</h4>
+        <h6>{launchDisplay}</h6>
       </div>
     );
   }

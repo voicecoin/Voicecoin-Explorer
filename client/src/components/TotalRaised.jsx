@@ -20,7 +20,7 @@ class TotalRaised extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="raised">
         <h3>Total Raised</h3>
         <h4>$ {this.state.totalRaised}</h4>
       </div>
