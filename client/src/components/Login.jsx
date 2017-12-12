@@ -1,25 +1,56 @@
 import React from 'react';
 
-const Login = () => {
-  return(
-    <div className="main">
-      <h3>SIGN IN</h3>
-      <form action="/login" method="post">
-        <div className="input">
-          <label>Email</label>
-          <input autoComplete="true" autoFocus="true" name="email" placeholder="email@domain.com" required type="text" />
-        </div>
-        <div className="input">
-          <label>Password</label>
-          <input name="password" placeholder="password" required type="password" />
-        </div>
-        <button type="button submit">Login</button>
-      </form>
-      <hr />
-      <p>Need to sign up for an account? <a href="/signup">Signup</a></p>
-      <a href="/">Home</a>
-    </div>
-  );
+class Login extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: ''
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const info = this.state;
+    this.props.getToken(info);
+  }
+
+  render() {
+    return(
+      <div className="form login">
+        <h4>LOGIN</h4>
+        <form action="http://api.voicecoin.net/api/" method="post">
+          <div className="username">
+            <label>Email</label>
+            <input
+              autoComplete="true"
+              name="email"
+              placeholder="email@domain.com"
+              required
+              type="text"
+            />
+          </div>
+          <div className="password">
+            <label>Passoword</label>
+            <input
+              type="password"
+              required
+            />
+          </div>
+          <button className="submit" type="button submit">Submit</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default Login;
