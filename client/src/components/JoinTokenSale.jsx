@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 const JoinTokenSale = () => {
   return(
-    <a href="/join">
+    <Link to="/join">
       <button className="join">
        Join Token Sale
       </button>
-    </a>
+    </Link>
   );
 }
 

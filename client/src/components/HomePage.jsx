@@ -2,17 +2,14 @@ import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  NavLink,
-  Redirect,
-  withRouter,
   Switch
 } from 'react-router-dom';
 
-import AllRoutes from './AllRoutes';
 import Brand from './Brand';
 import Header from './Header';
+import Join from './Join';
 import LanguageSelector from './LanguageSelector';
+import PreICO from './PreICO';
 
 const HomePage = () => {
   return(
@@ -20,7 +17,12 @@ const HomePage = () => {
       <Header />
       <Brand />
       <LanguageSelector />
-      <AllRoutes />
+      <Router>
+        <Switch>
+          <Route exact path="/" component={PreICO} />
+          <Route path="/join" component={Join} />
+        </Switch>
+      </Router>
     </div>
   );
 }
