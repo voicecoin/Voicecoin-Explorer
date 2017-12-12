@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/voicecoin/web-console-ui#readme",
   "dependencies": {
-    "moment": "^2.19.3",
+    "axios": "^0.17.1",
+    "moment": "^2.19.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2"
