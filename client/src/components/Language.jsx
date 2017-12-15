@@ -11,14 +11,12 @@ class Language extends React.Component {
   }
 
   handleClick(e) {
-    this.props.updateLanguage(e.target.id);
+    this.props.updateLanguage(e.target.id)
   }
 
   render() {
-    return(
-      <li onClick={this.handleClick} id={this.state.lang.iso}>
-        <p id={this.state.lang.iso}>{this.state.lang.full}</p>
-      </li>
+    return (
+      <a className="dropdown-item" href="#" id={this.state.lang.iso} onClick={this.handleClick}>{this.state.lang.full}</a>
     );
   }
 }

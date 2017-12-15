@@ -25,30 +25,18 @@ class Login extends React.Component {
   }
 
   render() {
-    return(
-      <div className="form login">
-        <h4>LOGIN</h4>
-        <form action="http://api.voicecoin.net/api/" method="post">
-          <div className="username">
-            <label>Email</label>
-            <input
-              autoComplete="true"
-              name="email"
-              placeholder="email@domain.com"
-              required
-              type="text"
-            />
-          </div>
-          <div className="password">
-            <label>Passoword</label>
-            <input
-              type="password"
-              required
-            />
-          </div>
-          <button className="submit" type="button submit">Submit</button>
-        </form>
-      </div>
+    return (
+      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="emailInput">Email address</label>
+          <input type="email" className="form-control" id="emailInput" name="email" placeholder="Enter email" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="passwordInput">Password</label>
+          <input type="password" className="form-control" id="passwordInput" name="password" required />
+        </div>
+        <button type="submit" className="btn btn-primary">Login</button>
+      </form>
     );
   }
 }

@@ -5,21 +5,17 @@ import {
   Switch
 } from 'react-router-dom';
 
-import Brand from './Brand';
 import Header from './Header';
 import Join from './Join';
-import LanguageSelector from './LanguageSelector';
-import PreICO from './PreICO';
+import PreIco from './PreIco';
 
 const HomePage = () => {
-  return(
-    <div className="wrapper">
+  return (
+    <div className="container-fluid">
       <Header />
-      <Brand />
-      <LanguageSelector />
       <Router>
         <Switch>
-          <Route exact path="/" component={PreICO} />
+          <Route exact path="/" component={PreIco} />
           <Route path="/join" component={Join} />
         </Switch>
       </Router>
