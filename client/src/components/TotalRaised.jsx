@@ -4,25 +4,23 @@ class TotalRaised extends React.Component {
   constructor() {
     super();
     this.state = {
-      totalRaised: 0
+      raised: 0
     }
   }
 
   componentWillMount() {
-    // axios.get(ENDPOINT_TO_GET_TOTAL_RAISED)
-    //   .then(({data: totalRaised }) => {
-    //     this.setState({totalRaised})
-    //   })
-    //   .catch(err => {
-    //     console.error(err, 'Error getting total raised');
-    //   });
+    // Fetch total raised and setState
   }
 
   render() {
-    return(
-      <div className="raised">
-        <h3>Total Raised</h3>
-        <h4>$ {this.state.totalRaised}</h4>
+    return (
+      <div className="container total-raised">
+        <div className="row col justify-content-center">
+          <h3>Amount Raised so Far</h3>
+        </div>
+        <div className="row col justify-content-center">
+          <h5>{this.state.raised}</h5>
+        </div>
       </div>
     );
   }

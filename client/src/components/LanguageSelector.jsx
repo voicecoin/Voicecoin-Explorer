@@ -25,14 +25,20 @@ class LanguageSelector extends React.Component {
   }
 
   render() {
-    return(
-      <div className="language">
-        <p className="selected">{this.state.language}</p>
-        <ul className="languagepicker">
-          {this.state.languages.map((lang, idx) =>
-            <Language key={idx} lang={lang} updateLanguage={this.updateLanguage} />
-          )}
-        </ul>                             
+    return (
+      <div>
+        <ul className="navbar-nav">
+          <li className="nav-item dropdown">
+            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.language}
+            </button>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuButton">
+              {this.state.languages.map((lang, idx) =>
+                <Language key={idx} lang={lang} updateLanguage={this.updateLanguage} />
+              )}
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }

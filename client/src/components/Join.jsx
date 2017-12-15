@@ -1,10 +1,9 @@
-import React from 'React';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
+import React from 'react';
 import Login from './Login';
 import Signup from './Signup';
 
-class Join extends React.Component{
+class Join extends React.Component {
   constructor() {
     super();
 
@@ -15,7 +14,7 @@ class Join extends React.Component{
   createUser(user) {
     axios({
       method: 'POST',
-      url: 'http://api.voicecoin.net/core/Account/CreateUser',
+      url: 'http://api.voicecoin.net/v1/Account',
       data: {
         email: user.email,
         password: user.password
@@ -30,7 +29,7 @@ class Join extends React.Component{
   getToken(email, password) {
     axios({
       method: 'POST',
-      url: `http://api.voicecoin.net/token?username=${email}&password=${password}`
+      url: `http://api.voicecoin.net/v1/Account/token?username=${email}&password=${password}`
     }).then(res => {
       console.log(res, 'Result from getToken')
     }).catch(err => {
@@ -39,10 +38,14 @@ class Join extends React.Component{
   }
 
   render() {
-    return(
-      <div className="main">
-        <Login getToken={this.getToken}/>
-        <Signup createUser={this.createUser} getToken={this.getToken}/>
+    return (
+      <div className="row">
+        <div className="col">
+          <Login getToken={this.getToken} />
+        </div>
+        <div className="col">
+          <Signup createUser={this.createUser} getToken={this.getToken} />
+        </div>
       </div>
     );
   }

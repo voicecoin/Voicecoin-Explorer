@@ -1,12 +1,16 @@
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
 
 const config = {
-  entry: './client/src/index.jsx',
-  output: {
-    path: path.join(__dirname, 'public/dist'),
-    filename: 'bundle.js'
+  devServer: {
+    contentBase: path.join(__dirname, 'public'),
+    historyApiFallback: true,
+    port: 3000
   },
+  devtool: 'source-map',
+  entry: [
+    './client/src/index.jsx'
+  ],
   module: {
     rules: [
       { test: /\.(js|jsx)$/,
@@ -22,15 +26,13 @@ const config = {
       }
     ]
   },
-  externals: {
-    'react/addons': true,
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true
+  output: {
+    path: path.join(__dirname, 'public/dist'),
+    filename: 'bundle.js'
   },
   resolve: {
     extensions: ['.js', '.jsx']
-  },
-  devtool: 'source-map'
+  }
 };
 
 module.exports = config;

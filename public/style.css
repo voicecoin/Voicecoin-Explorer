@@ -1,0 +1,8 @@
+.countdown-timer,
+.join-button {
+  margin: 75px 0;
+}
+
+.countdown-timer span {
+  padding-right: 5px;
+}

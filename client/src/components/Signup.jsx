@@ -2,13 +2,14 @@ import React from 'react';
 import axios from 'axios';
 
 class Signup extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       email: '',
-      password: '',
+      passoword: '',
       confirm: '',
-      match: false
+      match: false,
+      _minPasswordLength: 8
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -16,83 +17,60 @@ class Signup extends React.Component {
   }
 
   handleChange(e) {
+    console.log(e.target.value, e.target.name, 'value, name');
     this.setState({
       [e.target.name]: e.target.value
     });
+    if (this.state.confirm === this.state.passoword && this.state.passoword.length > this.state._minPasswordLength) {
+      this.setState({match: true})
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const info = this.state;
+    console.log(info, 'info');
     axios({
       method: 'GET',
-      url: `http://api.voicecoin.net/core/Account/UserExist/Exist?userName=${info.email}`
-    }).then(response => {
-      if (response.data === false) {
+      url: `http://api.voicecoin.net/v1/Account/exist?userName=${info.email}`
+    }).then(res => {
+      if (res.data === false) {
         return this.props.createUser(info);
       } else {
         alert('An account with this email address already exists!');
       }
     }).catch(err => {
-      console.error(err, 'ERROR checking if user exists');
-    })
+      console.error(err, 'Error checking if user exists');
+    });
   }
 
   passwordCheck(p1, p2) {
-    const c1 = p1.length > 7;
-    const c2 = p2.length > 7;
-    const match = p1 === p2;
-    const _out = match && (c1 && c2);
-    this.setState({match: _out});
+    const minLength = this.state._minPasswordLength;
+    if (p1.length >= minLength) {
+      if (p1 === p2) {
+        this.setState({match: true});
+      }
+    }
   }
 
   render() {
-    return(
-      <div className="form signup">
-        <h4>SIGNUP</h4>
-        <form
-          onChange={this.handleChange}
-          onSubmit={this.handleSubmit}>
-          <div className="username">
-            <label>Email</label>
-            <input
-              autoComplete="true"
-              autoFocus
-              name="email"
-              placeholder="email@domain.com"
-              required
-              type="text"
-            />
-          </div>
-          <div className="password">
-            <label>Passoword</label>
-            <input
-              name="password"
-              type="password"
-              required
-            />
-          </div>
-          <div className="confirm">
-            <label>Confirm Password</label>
-            <input
-              name="confirm"
-              type="password"
-              required
-            />
-          </div>
-          <div hidden={this.state.match} className="warning">
-            Passwords must match and be more than 8 characters long.
-          </div>
-          <button className="submit" disabled={!this.state.match} type="button submit">Submit</button>
-        </form>
-      </div>
+    return (
+      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="SignupEmailInput">Email address</label>
+          <input type="email" className="form-control" id="SignupEmailInput" name="email" placeholder="Enter email"  required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="SignupPasswordInput">Password</label>
+          <input type="password" className="form-control" id="SignupPasswordInput" minLength={this.state._minPasswordLength} name="password" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmInput">Confirm Password</label>
+          <input type="password" className="form-control" id="confirmInput" name="confirm" placeholder="Confirm password" required />
+        </div>
+        <button type="submit" className="btn btn-primary">Signup</button>
+      </form>
     );
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.password !== this.state.password || prevState.confirm !== this.state.confirm) {
-      this.passwordCheck(this.state.password, this.state.confirm);
-    }
   }
 }
 
