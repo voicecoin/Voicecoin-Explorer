@@ -6,3 +6,10 @@
 .countdown-timer span {
   padding-right: 5px;
 }
+
+.login-control {
+  border: solid 1px #444;
+  border-radius: 25px;
+  margin: 5% 25% 0;
+  padding: 30px 0;
+}
