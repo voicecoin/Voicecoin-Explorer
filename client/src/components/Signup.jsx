@@ -55,21 +55,36 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="SignupEmailInput">Email address</label>
-          <input type="email" className="form-control" id="SignupEmailInput" name="email" placeholder="Enter email"  required />
+      <div className="col-6 login-control">
+        <div className="row justify-content-center">
+          <h3>Signup</h3>
         </div>
-        <div className="form-group">
-          <label htmlFor="SignupPasswordInput">Password</label>
-          <input type="password" className="form-control" id="SignupPasswordInput" minLength={this.state._minPasswordLength} name="password" required />
+        <div className="row justify-content-center">
+          <div className="col-7 align-self-center">
+            <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+              <div className="form-group">
+                <label htmlFor="SignupEmailInput">Email address</label>
+                <input type="email" className="form-control" id="SignupEmailInput" name="email" placeholder="Enter email"  required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="SignupPasswordInput">Password</label>
+                <input type="password" className="form-control" id="SignupPasswordInput" minLength={this.state._minPasswordLength} name="password" required />
+              </div>
+              <div className="form-group">
+                <label htmlFor="confirmInput">Confirm Password</label>
+                <input type="password" className="form-control" id="confirmInput" name="confirm" placeholder="Confirm password" required />
+              </div>
+              <button type="submit" className="btn btn-primary">Signup</button>
+            </form>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="confirmInput">Confirm Password</label>
-          <input type="password" className="form-control" id="confirmInput" name="confirm" placeholder="Confirm password" required />
+        <div className="row justify-content-center">
+          <p>Already have an account?</p>
         </div>
-        <button type="submit" className="btn btn-primary">Signup</button>
-      </form>
+        <div className="row justify-content-center">
+          <a href="/login">Login</a>
+        </div>
+      </div>
     );
   }
 }
