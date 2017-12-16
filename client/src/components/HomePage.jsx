@@ -7,9 +7,10 @@ import {
 
 import Header from './Header';
 import Join from './Join';
-import Login from './Login';
+// import Login from './Login';
 import PreIco from './PreIco';
-import Signup from './Signup';
+// import Signup from './Signup';
+import SignupOrLogin from './SignupOrLogin';
 
 const HomePage = () => {
   return (
@@ -19,8 +20,7 @@ const HomePage = () => {
         <Switch>
           <Route exact path="/" component={PreIco} />
           <Route path="/join" component={Join} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
+          <Route path={/^\/(login|signup)/} component={SignupOrLogin} />
         </Switch>
       </Router>
     </div>

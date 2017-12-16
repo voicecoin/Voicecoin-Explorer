@@ -27,29 +27,36 @@ class Login extends React.Component {
   render() {
     return (
       <div className="col-6 login-control">
+
         <div className="row justify-content-center">
           <h3>Login</h3>
         </div>        
+        
         <div className="row justify-content-center">
           <div className="col-7 align-self-center">
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+
               <div className="form-group">
                 <label htmlFor="emailInput">Email address</label>
-                <input type="email" className="form-control" id="emailInput" name="email" placeholder="Enter email" required />
+                <input type="email" className="form-control" id="email" name="email" placeholder="Enter email" required />
               </div>
+              
               <div className="form-group">
                 <label htmlFor="passwordInput">Password</label>
-                <input type="password" className="form-control" id="passwordInput" name="password" required />
+                <input type="password" className="form-control" id="password" name="password" required />
               </div>
-              <button type="submit" className="btn btn-primary">Login</button>
+              
+              <button type="submit" className="btn btn-outline-secondary">Login</button>
             </form>
           </div>
         </div>
+        
         <div className="row justify-content-center">
-          <p>Need an account?</p>
+          <p>Need an account? <a href="/signup">Signup</a></p>
         </div>
+        
         <div className="row justify-content-center">
-          <a href="/signup">Signup</a>
+          <a href="/">Home</a>
         </div>
       </div>
     );

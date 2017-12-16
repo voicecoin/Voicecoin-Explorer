@@ -6,9 +6,11 @@ class Signup extends React.Component {
     super(props);
     this.state = {
       email: '',
+      confirmEmail: '',
       passoword: '',
-      confirm: '',
-      match: false,
+      confirmPassword: '',
+      emailError: null,
+      passwordError: null,
       _minPasswordLength: 8
     }
 
@@ -17,38 +19,34 @@ class Signup extends React.Component {
   }
 
   handleChange(e) {
-    console.log(e.target.value, e.target.name, 'value, name');
     this.setState({
       [e.target.name]: e.target.value
     });
-    if (this.state.confirm === this.state.passoword && this.state.passoword.length > this.state._minPasswordLength) {
-      this.setState({match: true})
-    }
   }
 
   handleSubmit(e) {
+    const { email, confirmEmail, password, confirmPassword } = this.state;
+    this.setState({emailError: null, passwordError: null});
     e.preventDefault();
-    const info = this.state;
-    console.log(info, 'info');
-    axios({
-      method: 'GET',
-      url: `http://api.voicecoin.net/v1/Account/exist?userName=${info.email}`
-    }).then(res => {
-      if (res.data === false) {
-        return this.props.createUser(info);
-      } else {
-        alert('An account with this email address already exists!');
+    if ((email === confirmEmail) && (password === confirmPassword)) {
+      axios({
+        method: 'GET',
+        url: `http://api.voicecoin.net/v1/Account/exist?userName=${email}`
+      }).then(res => {
+        if (res.data === false) {
+          return this.props.createUser({email, password});
+        } else {
+          alert('An account with this email address already exists!');
+        }
+      }).catch(err => {
+        console.error(err, 'Error checking if user exists');
+      });
+    } else {
+      if (email !== confirmEmail) {
+        this.setState({emailError: true});
       }
-    }).catch(err => {
-      console.error(err, 'Error checking if user exists');
-    });
-  }
-
-  passwordCheck(p1, p2) {
-    const minLength = this.state._minPasswordLength;
-    if (p1.length >= minLength) {
-      if (p1 === p2) {
-        this.setState({match: true});
+      if (password !== confirmPassword) {
+        this.setState({passwordError: true});
       }
     }
   }
@@ -56,33 +54,78 @@ class Signup extends React.Component {
   render() {
     return (
       <div className="col-6 login-control">
+
         <div className="row justify-content-center">
           <h3>Signup</h3>
         </div>
+
         <div className="row justify-content-center">
           <div className="col-7 align-self-center">
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
+
               <div className="form-group">
                 <label htmlFor="SignupEmailInput">Email address</label>
-                <input type="email" className="form-control" id="SignupEmailInput" name="email" placeholder="Enter email"  required />
+                <input
+                  type="email"
+                  className="form-control"
+                  id="SignupEmailInput"
+                  name="email"
+                  placeholder="Enter email"
+                  required />
               </div>
+
+              <div className="form-group">
+                <label htmlFor="ConfirmEmailInput">Confirm Email address</label>
+                <input
+                  type="email"
+                  className="form-control"
+                  id="SignupConfirmEmailInput"
+                  name="confirmEmail"
+                  placeholder="Confirm email"
+                  required
+                  style={{'backgroundColor': this.state.emailError ? '#FCC' : 'white'}} />
+                  <small hidden={this.state.emailError === null ? true : false} style={{'color': 'red'}}>
+                    Email addresses must match
+                  </small>
+              </div>
+
               <div className="form-group">
                 <label htmlFor="SignupPasswordInput">Password</label>
-                <input type="password" className="form-control" id="SignupPasswordInput" minLength={this.state._minPasswordLength} name="password" required />
+                <input
+                  type="password"
+                  className="form-control"
+                  id="SignupPasswordInput"
+                  minLength={this.state._minPasswordLength}
+                  name="password"
+                  required />
               </div>
+
               <div className="form-group">
                 <label htmlFor="confirmInput">Confirm Password</label>
-                <input type="password" className="form-control" id="confirmInput" name="confirm" placeholder="Confirm password" required />
+                <input
+                  type="password"
+                  className="form-control"
+                  id="confirmInput"
+                  name="confirmPassword"
+                  placeholder="Confirm password"
+                  required
+                  style={{'backgroundColor': this.state.passwordError ? '#FCC' : 'white'}} />
+                <small hidden={this.state.passwordError === null ? true : false} style={{'color': 'red'}}>
+                  Passwords must match
+                </small>
               </div>
-              <button type="submit" className="btn btn-primary">Signup</button>
+
+              <button type="submit" className="btn btn-outline-secondary">Signup</button>
             </form>
           </div>
         </div>
+        
         <div className="row justify-content-center">
-          <p>Already have an account?</p>
+          <p>Already have an account? <a href="/login">Login</a></p>
         </div>
+        
         <div className="row justify-content-center">
-          <a href="/login">Login</a>
+          <a href="/">Home</a>
         </div>
       </div>
     );
