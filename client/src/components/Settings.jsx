@@ -34,7 +34,7 @@ class Settings extends React.Component {
   }
 
   render() {
-    console.log(this.state, 'State in Settings');
+    console.log(this.props, 'Props in Settings');
     let email = this.state.info.email || 'Email Address';
     let firstName = this.state.info.fullName.firstName || 'First Name';
     let lastName = this.state.info.fullName.lastName || 'Last Name';
@@ -50,27 +50,27 @@ class Settings extends React.Component {
           <div className="row">
             <div className="form-group col">
               <label htmlFor="firstName">First Name</label>
-              <input type="text" className="form-control" id="firstName" readOnly={!this.state.canEdit} placeholder={firstName} value={this.state.info.fullName.firstName} />
+              <input type="text" className="form-control" id="firstName" readOnly={!this.state.canEdit} placeholder={firstName} value={this.state.info.fullName.firstName || ''} />
             </div>
             <div className="form-group col">
               <label htmlFor="lastName">Last Name</label>
-              <input type="text" className="form-control" id="lastName" readOnly={!this.state.canEdit} placeholder={lastName} value={this.state.info.fullName.lastName} />
+              <input type="text" className="form-control" id="lastName" readOnly={!this.state.canEdit} placeholder={lastName} value={this.state.info.fullName.lastName || ''} />
             </div>
           </div>
           <div className="row">
             <div className="form-group col">
               <label htmlFor="city">City</label>
-              <input type="text" className="form-control" id="city" readOnly={!this.state.canEdit} placeholder={city} value={this.state.info.location.city} />
+              <input type="text" className="form-control" id="city" readOnly={!this.state.canEdit} placeholder={city} value={this.state.info.location.city || ''} />
             </div>
             <div className="form-group col-6">
               <label htmlFor="phone">Phone Number</label>
-              <input type="tel" className="form-control" id="phone" readOnly={!this.state.canEdit} placeholder={phone} value={this.state.info.phone} />
+              <input type="tel" className="form-control" id="phone" readOnly={!this.state.canEdit} placeholder={phone} value={this.state.info.phone || ''} />
             </div>
           </div>
           <div className="row">
             <div className="form-group col">
               <label htmlFor="email">Email Address</label>
-              <input type="email" className="form-control" id="email" readOnly={!this.state.canEdit} placeholder={email} value={this.state.info.email} />
+              <input type="email" className="form-control" id="email" readOnly={!this.state.canEdit} placeholder={email} value={this.state.info.email || ''} />
             </div>
             <div className="form-group col-6"></div>
           </div>
