@@ -7,8 +7,6 @@ class Join extends React.Component {
     super();
   }
 
-  
-
   render() {
     return (
       <div className="row">

@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ProfileNav = props => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
       {props.email}
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#profileNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,16 +13,16 @@ const ProfileNav = props => {
       <div className="collapse navbar-collapse justify-content-end" id="profileNavbar">
         <ul className="navbar-nav ml-auto">
           <li className="nav-link">
-            <a href="/profile">Profile</a>
+            <Link to="/profile">Profile</Link>
           </li>
           <li className="nav-link">
-            <a href="/settings">Settings</a>
+            <Link to="/settings">Settings</Link>
           </li>
           <li className="nav-link">
-            <a href="/support">Support</a>
+            <Link to="/support">Support</Link>
           </li>
           <li className="nav-link">
-            <a href="#" onClick={props.logout}>Logout</a>
+            <Link to="#" onClick={props.logout}>Logout</Link>
           </li>
         </ul>
       </div>

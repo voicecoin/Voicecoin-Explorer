@@ -5,6 +5,7 @@ import Header from './Header';
 import Join from './Join';
 import PreIco from './PreIco';
 import Profile from './Profile';
+import ProfileNav from './ProfileNav';
 import Settings from './Settings';
 import SignupOrLogin from './SignupOrLogin';
 
@@ -12,19 +13,19 @@ class AllRoutes extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: null,
+      email: '',
       fireRedirect: false,
       fullName: {
-        firstName: null,
-        lastName: null
+        firstName: '',
+        lastName: ''
       },
       isLoggedIn: false,
       location: {
-        city: null,
-        country: null
+        city: '',
+        country: ''
       },
-      phone: null,
-      token: null
+      phone: '',
+      token: ''
     }
 
     this.createUser = this.createUser.bind(this);
@@ -50,6 +51,7 @@ class AllRoutes extends React.Component {
 
   getToken(user) {
     const history = this.props.history;
+    console.log(history, 'history in getToken');
     axios({
       method: 'POST',
       url: `http://api.voicecoin.net/v1/Account/token?username=${user.email}&password=${user.password}`
@@ -61,22 +63,23 @@ class AllRoutes extends React.Component {
   }
 
   logout() {
-    this.setState({email: null, fireRedirect: false, isLoggedIn: false, token: null});
+    this.setState({email: '', fireRedirect: false, isLoggedIn: false, token: ''});
     return (
       <Redirect to="/" />
     );
   }
 
   updateUserInfo(user) {
+    console.log(user, 'user in updateUserInfo');
     let { email, fullName, location, phone } = this.state;
     email = user.email;
     fullName = {
-      firstName: user.firstName,
-      lastName: user.lastName
+      firstName: user.fullName.firstName,
+      lastName: user.fullName.lastName
     };
     location = {
-      city: user.city,
-      country: user.country
+      city: user.location.city,
+      country: user.location.country
     };
     phone = user.phone;
 
@@ -84,9 +87,10 @@ class AllRoutes extends React.Component {
   }
 
   render() {
-    const { from } = this.props.location.state || '/';
-    const { fireRedirect } = this.state;
+    console.log(this.props, 'props in AllRoutes');
     const path = this.props.location.pathname;
+    const { from } = path || '/';
+    const { fireRedirect } = this.state;
     if (path === '/') {
       return (
         <React.Fragment>
@@ -119,16 +123,23 @@ class AllRoutes extends React.Component {
     }
     if (path === '/profile') {
       return (
-        <React.Fragment>
-          <Profile email={this.state.email} token={this.state.token} logout={this.logout} />
-        </React.Fragment>
+        <Profile email={this.state.email} isLoggedIn={this.state.isLoggedIn} token={this.state.token} logout={this.logout} />
       );
     }
     if (path === '/settings') {
       const info = this.state;
-      return (
-        <Settings info={info} updateUserInfo={this.updateUserInfo} />
-      );
+      if (info.isLoggedIn) {
+        return (
+          <React.Fragment>
+            <ProfileNav email={this.state.email} isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
+            <Settings info={info} isLoggedIn={this.state.isLoggedIn} updateUserInfo={this.updateUserInfo} />
+          </React.Fragment>
+        );
+      } else {
+        return (
+          <Redirect to="/login" />
+        );
+      }
     }
   }
 }

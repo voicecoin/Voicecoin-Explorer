@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ConversionRate from './ConversionRate';
 import Brand from './Brand';
 
@@ -25,7 +26,7 @@ class Header extends React.Component {
     if (!isLoggedIn) {
       return (
         <div className="container-fluid">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
             
             <Brand />
             
@@ -40,8 +41,7 @@ class Header extends React.Component {
                 )}
               </ul>            
               <div className="nav-item">
-                <a href="/login">Login</a>
-              
+                <Link to="/login">Login</Link>
               </div>
             </div>
           </nav>
@@ -65,7 +65,7 @@ class Header extends React.Component {
                 )}
               </ul>            
               <div className="nav-item">
-                <a href="#" onClick={this.props.logout}>Logout</a>
+                <Link to="#" onClick={this.props.logout}>Logout</Link>
               </div>
             </div>
           </nav>

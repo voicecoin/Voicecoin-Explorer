@@ -4,10 +4,10 @@ const Redirected = () => {
   <div>
     <h3>You need to be logged in to view this page</h3>
     <div>
-      <a href="/login">Login</a>
+      <Link to="/login">Login</Link>
     </div>
     <div>
-      <a href="/signup">Signup</a>
+      <Link to="/signup">Signup</Link>
     </div>
   </div>
 }

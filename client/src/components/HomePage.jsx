@@ -18,10 +18,6 @@ const HomePage = () => {
       </Router>
     </div>
   );
-}
-//<Route exact path="/" component={PreIco} />
-//<Route path="/join" component={Join} />
-//<Route path={/^\/(login|signup)/} component={SignupOrLogin} />
-//<Route path="/profile" component={Profile} />
+};
 
 export default HomePage;

@@ -19,10 +19,10 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (this.props.token !== null) {
+    if (this.props.token !== '') {
       return (
         <React.Fragment>
-          <ProfileNav email={this.props.email} logout={this.props.logout} />
+          <ProfileNav email={this.props.email} isLoggedIn={this.props.isLoggedIn} logout={this.props.logout} />
           <Funded amountFunded={this.state.amountFunded} />
           <Received amountReceived={this.state.amountReceived} />
           <EthAddress />

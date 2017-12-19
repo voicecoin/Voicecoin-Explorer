@@ -4,7 +4,7 @@ class EthAddress extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      ethAddress: null
+      ethAddress: ''
     }
   }
 
