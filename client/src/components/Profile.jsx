@@ -19,7 +19,6 @@ class Profile extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'props in profile');
     if (this.props.token !== '') {
       return (
         <React.Fragment>

@@ -70,15 +70,16 @@ class AllRoutes extends React.Component {
   }
 
   updateUserInfo(user) {
+    console.log(user, 'user in updateUserInfo');
     let { email, fullName, location, phone } = this.state;
     email = user.email;
     fullName = {
-      firstName: user.firstName,
-      lastName: user.lastName
+      firstName: user.fullName.firstName,
+      lastName: user.fullName.lastName
     };
     location = {
-      city: user.city,
-      country: user.country
+      city: user.location.city,
+      country: user.location.country
     };
     phone = user.phone;
 
@@ -86,9 +87,10 @@ class AllRoutes extends React.Component {
   }
 
   render() {
-    const { from } = this.props.location.pathname || '/';
-    const { fireRedirect } = this.state;
+    console.log(this.props, 'props in AllRoutes');
     const path = this.props.location.pathname;
+    const { from } = path || '/';
+    const { fireRedirect } = this.state;
     if (path === '/') {
       return (
         <React.Fragment>
@@ -126,12 +128,18 @@ class AllRoutes extends React.Component {
     }
     if (path === '/settings') {
       const info = this.state;
-      return (
-        <React.Fragment>
-          <ProfileNav email={this.state.email} isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
-          <Settings info={info} isLoggedIn={this.state.isLoggedIn} updateUserInfo={this.updateUserInfo} />
-        </React.Fragment>
-      );
+      if (info.isLoggedIn) {
+        return (
+          <React.Fragment>
+            <ProfileNav email={this.state.email} isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
+            <Settings info={info} isLoggedIn={this.state.isLoggedIn} updateUserInfo={this.updateUserInfo} />
+          </React.Fragment>
+        );
+      } else {
+        return (
+          <Redirect to="/login" />
+        );
+      }
     }
   }
 }

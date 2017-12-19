@@ -29,7 +29,7 @@ class LanguageSelector extends React.Component {
       <div>
         <ul className="navbar-nav">
           <li className="nav-item dropdown">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               {this.state.language}
             </button>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuButton">

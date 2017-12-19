@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Login extends React.Component {
   constructor() {
@@ -46,17 +47,17 @@ class Login extends React.Component {
                 <input type="password" className="form-control" id="password" name="password" required />
               </div>
               
-              <button type="submit" className="btn btn-outline-secondary">Login</button>
+              <button type="submit" className="btn btn-dark">Login</button>
             </form>
           </div>
         </div>
         
         <div className="row justify-content-center">
-          <p>Need an account? <a href="/signup">Signup</a></p>
+          <p>Need an account? <Link to="/signup">Signup</Link></p>
         </div>
         
         <div className="row justify-content-center">
-          <a href="/">Home</a>
+          <Link to="/">Home</Link>
         </div>
       </div>
     );

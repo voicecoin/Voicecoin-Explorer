@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ProfileNav = props => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-transparent">
       {props.email}
 
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#profileNavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
