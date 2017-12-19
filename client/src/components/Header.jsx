@@ -21,22 +21,57 @@ class Header extends React.Component {
 
   render() {
     const conversionRate = this.state.conversionRate;
-    return (
-      <div className="container-fluid">
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <Brand />
-          <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
+    const isLoggedIn = this.props.isLoggedIn;
+    if (!isLoggedIn) {
+      return (
+        <div className="container-fluid">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            
+            <Brand />
+            
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
 
-          <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-            {this.state.conversionRates.map((rate, idx) =>
-              <ConversionRate key={idx} rate={rate} />
-            )}
-          </div>
-        </nav>
-      </div>
-    );
+            <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul className="navbar-nav mr-auto">
+                {this.state.conversionRates.map((rate, idx) =>
+                  <ConversionRate key={idx} rate={rate} />
+                )}
+              </ul>            
+              <div className="nav-item">
+                <a href="/login">Login</a>
+              
+              </div>
+            </div>
+          </nav>
+        </div>
+      );
+    } else {
+      return (
+        <div className="container-fluid">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            
+            <Brand />
+            
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+              <ul className="navbar-nav mr-auto">
+                {this.state.conversionRates.map((rate, idx) =>
+                  <ConversionRate key={idx} rate={rate} />
+                )}
+              </ul>            
+              <div className="nav-item">
+                <a href="#" onClick={this.props.logout}>Logout</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      );
+    }
   }
 }
 

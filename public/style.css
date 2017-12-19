@@ -6,3 +6,25 @@
 .countdown-timer span {
   padding-right: 5px;
 }
+
+.eth-address{
+  margin-bottom: 10px;
+}
+
+.eth-address img {
+  padding: 20px;
+  border: 1px solid red;
+}
+
+.funded,
+.eth-address,
+.received {
+  margin: 5% 0;
+}
+
+.login-control {
+  border: solid 1px #444;
+  border-radius: 25px;
+  margin: 5px 25% 0;
+  padding: 15px 0;
+}
