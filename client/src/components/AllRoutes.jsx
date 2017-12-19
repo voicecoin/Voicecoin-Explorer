@@ -5,6 +5,7 @@ import Header from './Header';
 import Join from './Join';
 import PreIco from './PreIco';
 import Profile from './Profile';
+import Settings from './Settings';
 import SignupOrLogin from './SignupOrLogin';
 
 class AllRoutes extends React.Component {
@@ -13,13 +14,23 @@ class AllRoutes extends React.Component {
     this.state = {
       email: null,
       fireRedirect: false,
+      fullName: {
+        firstName: null,
+        lastName: null
+      },
       isLoggedIn: false,
+      location: {
+        city: null,
+        country: null
+      },
+      phone: null,
       token: null
     }
 
     this.createUser = this.createUser.bind(this);
     this.getToken = this.getToken.bind(this);
     this.logout = this.logout.bind(this);
+    this.updateUserInfo = this.updateUserInfo.bind(this);
   }
 
   createUser(user) {
@@ -54,6 +65,22 @@ class AllRoutes extends React.Component {
     return (
       <Redirect to="/" />
     );
+  }
+
+  updateUserInfo(user) {
+    let { email, fullName, location, phone } = this.state;
+    email = user.email;
+    fullName = {
+      firstName: user.firstName,
+      lastName: user.lastName
+    };
+    location = {
+      city: user.city,
+      country: user.country
+    };
+    phone = user.phone;
+
+    this.setState({email, fullName, location, phone});
   }
 
   render() {
@@ -93,9 +120,14 @@ class AllRoutes extends React.Component {
     if (path === '/profile') {
       return (
         <React.Fragment>
-          <Header isLoggedIn={this.state.isLoggedIn} logout={this.logout} />
-          <Profile token={this.state.token} />
+          <Profile email={this.state.email} token={this.state.token} logout={this.logout} />
         </React.Fragment>
+      );
+    }
+    if (path === '/settings') {
+      const info = this.state;
+      return (
+        <Settings info={info} updateUserInfo={this.updateUserInfo} />
       );
     }
   }
