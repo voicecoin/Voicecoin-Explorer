@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack",
     "build:watch": "webpack --watch",
-    "start": "nodemon server.js"
+    "start": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,8 @@
   },
   "homepage": "https://github.com/voicecoin/web-console-ui#readme",
   "dependencies": {
-    "moment": "^2.19.3",
+    "axios": "^0.17.1",
+    "moment": "^2.19.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2"
@@ -32,11 +33,10 @@
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
     "enzyme": "^3.2.0",
-    "express": "^4.16.2",
     "jsdom": "^11.5.1",
     "mocha": "^4.0.1",
-    "nodemon": "^1.12.5",
     "path": "^0.12.7",
-    "webpack": "^3.10.0"
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
   }
 }

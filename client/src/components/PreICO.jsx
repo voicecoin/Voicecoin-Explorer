@@ -1,19 +1,16 @@
 import React from 'react';
-import TimeRemaining from './TimeRemaining';
+import CountdownTimer from './CountdownTimer';
 import TotalRaised from './TotalRaised';
-import JoinTokenSale from './JoinTokenSale';
+import JoinButton from './JoinButton';
 
-const PreICO = () => {
-  return(
-    <div className="PreICO">
-      <h1>Voicecoin</h1>
-      <h3>Next Generation BlockChain</h3>
-      <h3>Connect Voice with BlockChain</h3>
-      <TimeRemaining />
+const PreIco = () => {
+  return (
+    <div className="container-fluid pre-ico">
+      <CountdownTimer />
       <TotalRaised />
-      <JoinTokenSale />
+      <JoinButton />
     </div>
   );
 }
 
-export default PreICO;
+export default PreIco;

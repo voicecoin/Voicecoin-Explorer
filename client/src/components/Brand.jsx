@@ -1,8 +1,8 @@
 import React from 'react';
 
 const Brand = () => {
-  return(
-    <h2 href="/">Voicecoin</h2>
+  return (
+    <a className="navbar-brand" href="/">Voice Coin</a>
   );
 }
 

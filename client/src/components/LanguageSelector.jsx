@@ -5,7 +5,7 @@ class LanguageSelector extends React.Component {
   constructor() {
     super();
     this.state = {
-      language: 'en',
+      language: 'English',
       languages: [
         {full: 'English' , iso: 'en'},
         {full: 'Chineese' , iso: 'zh'},
@@ -19,17 +19,26 @@ class LanguageSelector extends React.Component {
   }
 
   updateLanguage(language) {
-    console.log(language, 'Selected language');
-    // this.setState({language});
+    const languages = this.state.languages;
+    const filtered = languages.filter(lang => lang.iso === language);
+    this.setState({language: filtered[0].full});
   }
 
   render() {
-    return(
+    return (
       <div>
-        <p>{this.state.language}</p>
-        {this.state.languages.map((lang, idx) =>
-          <Language key={idx} lang={lang} updateLanguage={this.updateLanguage} />
-        )}                                
+        <ul className="navbar-nav">
+          <li className="nav-item dropdown">
+            <button className="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {this.state.language}
+            </button>
+            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuButton">
+              {this.state.languages.map((lang, idx) =>
+                <Language key={idx} lang={lang} updateLanguage={this.updateLanguage} />
+              )}
+            </div>
+          </li>
+        </ul>
       </div>
     );
   }
