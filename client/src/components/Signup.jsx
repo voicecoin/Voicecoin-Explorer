@@ -122,11 +122,11 @@ class Signup extends React.Component {
         </div>
         
         <div className="row justify-content-center">
-          <p>Already have an account? <Link to="/login">Login</Link></p>
+          <p>Already have an account? <Link className="link" to="/login">Login</Link></p>
         </div>
         
         <div className="row justify-content-center">
-          <Link to="/">Home</Link>
+          <Link className="link" to="/">Home</Link>
         </div>
       </div>
     );

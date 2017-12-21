@@ -13,16 +13,16 @@ const ProfileNav = props => {
       <div className="collapse navbar-collapse justify-content-end" id="profileNavbar">
         <ul className="navbar-nav ml-auto">
           <li className="nav-link">
-            <Link to="/profile">Profile</Link>
+            <Link className="link" to="/profile">Profile</Link>
           </li>
           <li className="nav-link">
-            <Link to="/settings">Settings</Link>
+            <Link className="link" to="/settings">Settings</Link>
           </li>
           <li className="nav-link">
-            <Link to="/support">Support</Link>
+            <Link className="link" to="/support">Support</Link>
           </li>
           <li className="nav-link">
-            <Link to="#" onClick={props.logout}>Logout</Link>
+            <Link className="link" to="#" onClick={props.logout}>Logout</Link>
           </li>
         </ul>
       </div>

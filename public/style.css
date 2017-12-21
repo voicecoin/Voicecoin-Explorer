@@ -29,6 +29,14 @@
   margin: 5% 0;
 }
 
+.link {
+  color: inherit;
+}
+.link:hover {
+  text-decoration: none;
+  color: #555;
+}
+
 .login-control {
   border: solid 1px #444;
   border-radius: 25px;

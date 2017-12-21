@@ -41,7 +41,7 @@ class Header extends React.Component {
                 )}
               </ul>            
               <div className="nav-item">
-                <Link to="/login">Login</Link>
+                <Link className="link" to="/login">Login</Link>
               </div>
             </div>
           </nav>
@@ -50,7 +50,7 @@ class Header extends React.Component {
     } else {
       return (
         <div className="container-fluid">
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          <nav className="navbar navbar-expand-lg navbar-light">
             
             <Brand />
             
@@ -65,7 +65,7 @@ class Header extends React.Component {
                 )}
               </ul>            
               <div className="nav-item">
-                <Link to="#" onClick={this.props.logout}>Logout</Link>
+                <Link className="link" to="#" onClick={this.props.logout}>Logout</Link>
               </div>
             </div>
           </nav>

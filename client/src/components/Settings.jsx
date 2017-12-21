@@ -103,7 +103,7 @@ class Settings extends React.Component {
         <div className="row justify-content-start">
           <div className="col-2">
             <button className="btn btn-light" onClick={this.handleSubmit}>
-              <Link to="/profile">Save Changes</Link>
+              <Link className="link" to="/profile">Save Changes</Link>
             </button>
           </div>
         </div>

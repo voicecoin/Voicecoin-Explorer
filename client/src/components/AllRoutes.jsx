@@ -51,7 +51,6 @@ class AllRoutes extends React.Component {
 
   getToken(user) {
     const history = this.props.history;
-    console.log(history, 'history in getToken');
     axios({
       method: 'POST',
       url: `http://api.voicecoin.net/v1/Account/token?username=${user.email}&password=${user.password}`
@@ -70,7 +69,6 @@ class AllRoutes extends React.Component {
   }
 
   updateUserInfo(user) {
-    console.log(user, 'user in updateUserInfo');
     let { email, fullName, location, phone } = this.state;
     email = user.email;
     fullName = {
@@ -87,7 +85,6 @@ class AllRoutes extends React.Component {
   }
 
   render() {
-    console.log(this.props, 'props in AllRoutes');
     const path = this.props.location.pathname;
     const { from } = path || '/';
     const { fireRedirect } = this.state;
@@ -103,7 +100,7 @@ class AllRoutes extends React.Component {
       return (
         <React.Fragment>
           <Header isLoggedIn={this.state.isLoggedIn} />
-          <Join />
+          <Join info={this.state} />
         </React.Fragment>
       );
     }

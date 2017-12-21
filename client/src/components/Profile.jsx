@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import EthAddress from './EthAddress';
 import Funded from './Funded';
+import JoinButton from './JoinButton';
 import ProfileNav from './ProfileNav';
 import Received from './Received';
 
@@ -26,6 +27,7 @@ class Profile extends React.Component {
           <Funded amountFunded={this.state.amountFunded} />
           <Received amountReceived={this.state.amountReceived} />
           <EthAddress />
+          <JoinButton />
         </React.Fragment>
       );
     } else {
